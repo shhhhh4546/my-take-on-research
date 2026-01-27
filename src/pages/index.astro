@@ -1,11 +1,62 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const papers = [
+  {
+    title: "Rethinking disability: the social model of disability and chronic disease",
+    href: "/critique-1",
+    date: "Jan 2026",
+    tags: ["Disability studies", "Ethics"],
+    blurb: "How the social model complicates 'cure' narratives (CRISPR, stigma, and who gets to decide).",
+  },
+  {
+    title: "Maximising usability: The Principles of Universal Design",
+    href: "/critique-2",
+    date: "Jan 2026",
+    tags: ["Universal design", "Accessibility"],
+    blurb: "Universal vs adaptable vs transgenerational design and what's missing (culture, literacy, gender).",
+  },
+  {
+    title: "Working with Research Participants with Disabilities",
+    href: "/critique-3",
+    date: "Jan 2026",
+    tags: ["Research methods", "HCI"],
+    blurb: "Why simulated impairments can mislead and when proxy users help (especially multi-impairment contexts).",
+  },
+];
 ---
+<BaseLayout title="My take on research papers">
+  <h1>My take on research papers</h1>
 
-<Layout>
-	<Welcome />
-</Layout>
+  <p class="lede">
+    A running journal where I summarize what a paper claims, what I agree with, what I’m not convinced by, and how it changes my design lens.
+  </p>
+
+  <div class="controls">
+    <input id="q" class="search" type="search" placeholder="Search papers…" />
+  </div>
+
+  <ul id="list" class="paperlist">
+    {papers.map((p) => (
+      <li class="paperitem" data-search={`${p.title} ${p.tags.join(" ")} ${p.blurb}`.toLowerCase()}>
+        <a class="paperlink" href={p.href}>
+          <div class="papertitle">{p.title}</div>
+        </a>
+        <div class="papermeta">{p.date} • {p.tags.join(" · ")}</div>
+        <div class="paperblurb">{p.blurb}</div>
+      </li>
+    ))}
+  </ul>
+
+  <script is:inline>
+    const q = document.getElementById("q");
+    const items = Array.from(document.querySelectorAll(".paperitem"));
+    q?.addEventListener("input", (e) => {
+      const term = e.target.value.trim().toLowerCase();
+      items.forEach((li) => {
+        const hay = li.dataset.search || "";
+        li.style.display = hay.includes(term) ? "" : "none";
+      });
+    });
+  </script>
+</BaseLayout>
