@@ -5,22 +5,19 @@ const papers = [
   {
     title: "Rethinking disability: the social model of disability and chronic disease",
     href: "/critique-1",
-    date: "Jan 2026",
-    tags: ["Disability studies", "Ethics"],
+    meta: "Sara Goering • PMCID: PMC4596173 • PMID: 25862485",
     blurb: "How the social model complicates 'cure' narratives (CRISPR, stigma, and who gets to decide).",
   },
   {
     title: "Maximising usability: The Principles of Universal Design",
     href: "/critique-2",
-    date: "Jan 2026",
-    tags: ["Universal design", "Accessibility"],
+    meta: "Molly Follette Story, M.S. • Pages 4-12 • Published online: 22 Oct 2010",
     blurb: "Universal vs adaptable vs transgenerational design and what's missing (culture, literacy, gender).",
   },
   {
     title: "Working with Research Participants with Disabilities",
     href: "/critique-3",
-    date: "Jan 2026",
-    tags: ["Research methods", "HCI"],
+    meta: "Research Methods in Human-Computer Interaction (Second Edition), Chapter 16 • Jonathan Lazar, Jinjuan Heidi Feng, Harry Hochheiser",
     blurb: "Why simulated impairments can mislead and when proxy users help (especially multi-impairment contexts).",
   },
 ];
@@ -38,11 +35,11 @@ const papers = [
 
   <ul id="list" class="paperlist">
     {papers.map((p) => (
-      <li class="paperitem" data-search={`${p.title} ${p.tags.join(" ")} ${p.blurb}`.toLowerCase()}>
+      <li class="paperitem" data-search={`${p.title} ${p.meta} ${p.blurb}`.toLowerCase()}>
         <a class="paperlink" href={p.href}>
           <div class="papertitle">{p.title}</div>
         </a>
-        <div class="papermeta">{p.date} • {p.tags.join(" · ")}</div>
+        <div class="papermeta">{p.meta}</div>
         <div class="paperblurb">{p.blurb}</div>
       </li>
     ))}
