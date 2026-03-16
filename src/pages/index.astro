@@ -5,32 +5,50 @@ const papers = [
   {
     title: "Rethinking disability: the social model of disability and chronic disease",
     href: "/critique-1",
-    meta: "Sara Goering • PMCID: PMC4596173 • PMID: 25862485",
+    meta: "Current Reviews in Musculoskeletal Medicine, 8(2), 134–138 • Goering",
     blurb: "How the social model complicates 'cure' narratives (CRISPR, stigma, and who gets to decide).",
   },
   {
     title: "Maximising usability: The Principles of Universal Design",
     href: "/critique-2",
-    meta: "Molly Follette Story, M.S. • Pages 4-12 • Published online: 22 Oct 2010",
+    meta: "Assistive Technology, 10(1), 4–12 • Story",
     blurb: "Universal vs adaptable vs transgenerational design and what's missing (culture, literacy, gender).",
   },
   {
     title: "Working with Research Participants with Disabilities",
     href: "/critique-3",
-    meta: "Research Methods in Human-Computer Interaction (Second Edition), Chapter 16 • Jonathan Lazar, Jinjuan Heidi Feng, Harry Hochheiser",
+    meta: "Research Methods in Human-Computer Interaction (2nd ed.), Ch. 16, pp. 493–522 • Lazar, Feng, Hochheiser • Morgan Kaufmann, 2017",
     blurb: "Why simulated impairments can mislead and when proxy users help (especially multi-impairment contexts).",
   },
   {
     title: "What difference does tech make? Conceptualizations of Disability and Assistive Technology among Kenyan Youth",
     href: "/critique-4",
-    meta: "ASSETS '21 • Barbareschi, Kopi, Oldfrey, Holloway • DOI: 10.1145/3441852.3471226",
+    meta: "ASSETS '21 • Barbareschi, Kopi, Oldfrey, Holloway • Article 18, 1–13",
     blurb: "ATs as status, stigma as consent, and why language/context should shape interpretation.",
   },
   {
     title: "Technology Adoption and Learning Preferences for Older Adults: Evolving Perceptions, Ongoing Challenges, and Emerging Design Opportunities",
     href: "/critique-5",
-    meta: "CHI '21 • Pang, Wang, McGrenere, Leung, Dai, Moffatt • DOI: 10.1145/3411764.3445702",
+    meta: "CHI '21 • Pang, Wang, McGrenere, Leung, Dai, Moffatt • Article 490, 1–13",
     blurb: "Scam risks, income differences, and language coverage in Help Kiosk design.",
+  },
+  {
+    title: "\"It's like Goldilocks:\" Bespoke Slides for Fluctuating Audience Access Needs",
+    href: "/critique-6",
+    meta: "ASSETS '24 • Mack, Glazko, Islam, Hofmann, Mankoff • Article 71, 1–15",
+    blurb: "Power dynamics in slide accessibility, fluctuating needs, and a dual framework for presenters and viewers.",
+  },
+  {
+    title: "Including Adults with Severe Intellectual Disabilities in Co-Design through Active Support",
+    href: "/critique-7",
+    meta: "CHI '21 • Bircanin, Brereton, Sitbon, Ploderer, Bayor, Koplick • Article 486, 1–12",
+    blurb: "Fading vs. diminishing support, the ID spectrum's diversity, and the gap in intimacy acknowledgement for people with ID.",
+  },
+  {
+    title: "Towards Sign Language-Centric Design of ASL Survey Tools",
+    href: "/critique-8",
+    meta: "CHI '22 • Mahajan, Walker, Boll, Santacreu, Salvino, Westfort, Reis, Solovey • Article 538, 1–16",
+    blurb: "Survey language barriers for DHH people, think-aloud co-design, and MCQ layout preferences.",
   },
 ];
 ---
@@ -42,7 +60,9 @@ const papers = [
   </p>
 
   <div class="controls">
-    <input id="q" class="search" type="search" placeholder="Search papers…" />
+    <!-- Visible label hidden visually but available to assistive tech (WCAG 1.3.1) -->
+    <label for="q" class="sr-only">Search papers</label>
+    <input id="q" class="search" type="search" placeholder="Search papers…" aria-label="Search papers" />
   </div>
 
   <ul id="list" class="paperlist">
